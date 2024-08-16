@@ -6,7 +6,7 @@
 1.ejecutar npm i para instalacion de modulos node_modules
 2.ejecutar npm start
 
-en cualquiera de los casos va a ser necesaria la instalacion de las librerias de material si lo solicita el proyecto 
+
 
 el proyecto esta hecho de la forma siguientes: 
 
