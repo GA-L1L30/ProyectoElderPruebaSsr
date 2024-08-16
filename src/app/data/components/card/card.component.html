@@ -1,0 +1,33 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Titulo : {{ data.title }}</mat-card-title>
+    <mat-card-subtitle>ID Usuario : {{ data.userId }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content class="mt-2" style="padding-bottom: 16px">
+    <p style="text-align: justify">
+      <strong>Contenido : </strong> {{ data.body }}
+      <br />
+    </p>
+    <p>
+      <strong>Id : </strong> {{ data.id }}
+      <br />
+    </p>
+  </mat-card-content>
+
+  <mat-divider></mat-divider>
+
+  <mat-card-actions *ngIf="esAdmin">
+    <button
+      mat-button
+      mat-raised
+      color="primary"
+      [routerLink]="['/data/edit', data.id]"
+    >
+      <mat-icon>edit</mat-icon>
+      Editar
+    </button>
+
+    <span class="spacer"></span>
+  </mat-card-actions>
+</mat-card>

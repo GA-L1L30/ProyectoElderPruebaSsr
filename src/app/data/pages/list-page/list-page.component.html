@@ -1,0 +1,39 @@
+<div style="text-align: center">
+  <h1><strong>Listado de Datos</strong></h1>
+  <div *ngIf="esAdmin()">
+    <button
+      mat-button
+      mat-raised
+      color="primary"
+      [routerLink]="['/data/create']"
+    >
+      <mat-icon>edit</mat-icon>
+      Agregar Nueva Data
+    </button>
+  </div>
+</div>
+<mat-divider></mat-divider>
+
+<!-- Input para filtrar la lista -->
+<div style="text-align: right; margin-bottom: 10px">
+  <mat-form-field>
+    <mat-label>Filtrar por ID de Usuario</mat-label>
+    <input
+      matInput
+      [(ngModel)]="filterUserId"
+      placeholder="Ingrese el ID de usuario"
+      (input)="filterByUserId()"
+    />
+  </mat-form-field>
+</div>
+
+<div></div>
+
+<div class="grid bm-8 pt-2">
+  <div
+    *ngFor="let item of filteredData"
+    class="col-12 sm:col-4 md:col-3 xl:col-2"
+  >
+    <data-card [data]="item" [esAdmin]="esAdmin()"></data-card>
+  </div>
+</div>

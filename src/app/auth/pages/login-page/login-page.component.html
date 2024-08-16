@@ -1,0 +1,59 @@
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="mat-form-field">
+  <div class="flex flex-column">
+    <span class="text-lg mb-4" id="title" style="text-align: center;">Página de Logueo</span>
+    <mat-form-field>
+      <mat-label>Usuario</mat-label>
+      <input
+        matInput
+        placeholder="Nombre de usuario"
+        formControlName="username"
+      />
+      <mat-error
+        *ngIf="
+          loginForm.get('username')?.hasError('required') &&
+          loginForm.get('username')?.touched
+        "
+      >
+        El campo de usuario es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Contraseña</mat-label>
+      <input
+        matInput
+        type="password"
+        placeholder="Contraseña"
+        formControlName="password"
+      />
+      <mat-error
+        *ngIf="
+          loginForm.get('password')?.hasError('required') &&
+          loginForm.get('password')?.touched
+        "
+      >
+        El campo de contraseña es obligatorio.
+      </mat-error>
+      <mat-error
+        *ngIf="
+          loginForm.get('password')?.hasError('minlength') &&
+          loginForm.get('password')?.touched
+        "
+      >
+        La contraseña debe tener al menos 6 caracteres.
+      </mat-error>
+    </mat-form-field>
+
+    <button
+      mat-button
+      mat-flat-button
+      color="primary"
+      type="submit"
+      [disabled]="loginForm.invalid"
+      (click)="onLogin()"
+    >
+      <mat-icon>person</mat-icon>
+      Ingresar
+    </button>
+  </div>
+</form>
